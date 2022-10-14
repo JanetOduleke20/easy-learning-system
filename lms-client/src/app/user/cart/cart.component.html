@@ -1,0 +1,40 @@
+
+<div class="" style="margin-top: 100px;">
+  <app-navbar></app-navbar>
+
+  <div class="container">
+    <div class="row col-md-d-flex">
+      <!-- Cart Courses -->
+      <div class="col-md-4 courses">
+        <div class="card my-2 d-flex" *ngFor="let i=index; let item of cart">
+          <div class="d-flex">
+            <div>
+              <img src={{item.coverImage}} alt="" style="object-fit: cover; height: 100px;">
+            </div>
+            <div class="mx-3">
+              <div class="my-2">
+                <span style="font-weight: 400; font-size: 15px;" class="fw-bold">{{item.courseName}}</span>
+              </div>
+              <div class="remove my-2">
+                <span style="color: rgb(255, 102, 0);"><button class="btn bg-none border border-light" (click)="remove(item._id, i)">Remove</button></span>
+              </div>
+              <div class="price my-2">
+                <span class="fw-bold">$5.00</span>
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Total and Checkout -->
+      <div class="col-md-6 totalncheckout">
+
+      </div>
+
+    </div>
+  </div>
+
+  <app-footer class="mb-auto"></app-footer>
+</div>
