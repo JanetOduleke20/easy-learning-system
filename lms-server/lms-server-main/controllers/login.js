@@ -21,10 +21,15 @@ const login = async ( req, res ) => {
                 const userJwt = generateJwt(result);
 
                 res.json( { token: userJwt, isSuccess: true, email: result.email } );
+                console.log("True")
             } else {
+                console.log("False")
+
                 res.json( { isSuccess: false, message: "Login Failed", isWrongPassword: true } );
             }
         } else {
+                console.log("False")
+
             res.json( { isSuccess: false, message: "User does not exist", userNotExist: true } );
         }
     } );

@@ -17,4 +17,8 @@ export class AddResourcesService {
   addResources(data:any) {
     return this._http.post<any>(`${this.userBaseUrl}resources/stage-two`, data);
   }
+
+  getCourseResources(data:any) {
+    return this._http.post<any>(`${this.userBaseUrl}get-course-resources`, data);
+  }
 }

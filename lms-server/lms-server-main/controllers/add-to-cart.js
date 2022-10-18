@@ -4,12 +4,13 @@ const {Courses} = require('../models/courses.model')
 
 const addToCart = (req, res)=>{
     const {_id, signedInUser, courseName, coverImage} = req.body;
+    console.log(req.body);
     Cart.create({courseId: _id, userId: signedInUser, courseName, coverImage}, (err, response)=> {
         if(err) {
-            res.json({status: false, message: 'Error occurred while adding to cart. Please try again'})
-        }else{
-            res.json({status: true, message: 'Added to cart'})
-
+            console.log(err);
+            res.json({status: false, message: "Error occurred"})
+        }else {
+            console.log({status: true, message: "Added"});
         }
     })
 }

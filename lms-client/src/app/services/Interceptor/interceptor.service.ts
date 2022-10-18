@@ -4,7 +4,6 @@ import { AuthService } from '../Auth/auth.service';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { SnackBarComponent } from 'src/app/snack-bar/snack-bar.component';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +12,6 @@ export class InterceptorService implements HttpInterceptor{
 
   constructor(
     private Auth: AuthService,
-    public snackBar: MatSnackBar
   ) { }
 
     public message = ''
@@ -29,17 +27,17 @@ export class InterceptorService implements HttpInterceptor{
       if(err) {
         this.Auth.signOut();
         // console.log(err);
-        this.openSnackBar(this.message, 'Error occurred please try again');
+        // this.openSnackBar(this.message, 'Error occurred please try again');
       }
       return throwError(err);
     }))
   }
 
-  openSnackBar(message: string, panelClass: string) {
-    this.snackBar.openFromComponent(SnackBarComponent, {
-      data: message,
-      panelClass: panelClass,
-      duration: 10000
-    })
-  }
+  // openSnackBar(message: string, panelClass: string) {
+  //   this.snackBar.openFromComponent(SnackBarComponent, {
+  //     data: message,
+  //     panelClass: panelClass,
+  //     duration: 10000
+  //   })
+  // }
 }

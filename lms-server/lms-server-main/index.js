@@ -28,7 +28,15 @@ const {deleteFromCart} = require('./controllers/add-to-cart')
 
 const {stageTwoOfAddResources} = require('./controllers/resources');
 
-const {stageThreeOfAddPrice} = require('./controllers/price')
+const {stageThreeOfAddPrice} = require('./controllers/price');
+
+const {editCourseDetails} = require('./controllers/editCourse');
+
+const {getCourseResources} = require('./controllers/resources');
+
+const {editCourseResources} = require('./controllers/editCourse');
+
+const {editPrice} = require('./controllers/editCourse')
 
 const app = express();
 
@@ -45,6 +53,8 @@ app.use(cors({origin:"http://localhost:4093"}));
 const PORT = process.env.PORT || 3487;
 
 app.use("/api/user/", authenticateUser)
+
+app.get('/api/getConnection', )
 
 app.post("/api/account/register", newUser);
 
@@ -68,7 +78,15 @@ app.post('/api/user/get-items-from-cart', getItemsFromCart);
 
 app.post('/api/user/delete-from-cart', deleteFromCart);
 
+app.post('/api/user/edit-course-details', editCourseDetails);
+
+app.post('/api/user/get-course-resources', getCourseResources)
+
 app.post('/api/user/get-user', getSignedInUser);
+
+app.post('/api/user/edit-resource-details', editCourseResources)
+
+app.post('/api/user/edit-course-price', editPrice);
 
 
 

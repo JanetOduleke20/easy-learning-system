@@ -15,7 +15,7 @@ import { MatInputModule } from '@angular/material/input';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
-import { MatMenuModule } from '@angular/material/menu';
+import { MatMenu, MatMenuModule } from '@angular/material/menu';
 import { TransactionHistoryComponent } from './transaction-history/transaction-history.component';
 import { MatTableModule} from '@angular/material/table';
 import { AddCourseComponent } from './add-course/add-course.component';
@@ -45,6 +45,9 @@ import { NoCoursesYetComponent } from './no-courses-yet/no-courses-yet.component
 import { EditCoursesComponent } from './edit-courses/edit-courses.component';
 import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
 import { SnackBarComponent } from './snack-bar/snack-bar.component'
+import { MatDialogModule } from '@angular/material/dialog';
+import { DialogBoxComponent } from './dialog-box/dialog-box.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -71,6 +74,7 @@ import { SnackBarComponent } from './snack-bar/snack-bar.component'
     NoCoursesYetComponent,
     EditCoursesComponent,
     SnackBarComponent,
+    DialogBoxComponent,
 
   ],
   imports: [
@@ -95,7 +99,11 @@ import { SnackBarComponent } from './snack-bar/snack-bar.component'
     HttpClientModule,
     MatProgressBarModule,
     MatStepperModule,
-    MatSnackBarModule
+    MatDialogModule,
+    MatMenuModule,
+    MatProgressSpinnerModule
+    // Angular4PaystackModule.forRoot('sk_test_1bd1e4d513c379cbe1a2b481b68f18e183e06867')
+
 
 
   ],

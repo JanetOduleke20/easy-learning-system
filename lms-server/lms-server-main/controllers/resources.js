@@ -20,8 +20,6 @@ const stageTwoOfAddResources = async(req, res)=>{
 
         }else{
             if(!foundResources){
-               
-    
                 cloudinary.v2.uploader.upload(resourcesFile,{timeout: 120000,resource_type:"auto",folder:"Easy Learning"},(err,result)=>{
                     if(err){
                         console.log(err);
@@ -44,27 +42,6 @@ const stageTwoOfAddResources = async(req, res)=>{
                     }
                     
                 })
-                // cloudinary.v2.uploader.upload(resourcesFile, {timeout: 120000}, {resource_type: "auto"}),(result=> 
-                //     console.log(result)
-                // //     {
-                // //     Courses.find({"authorId": signedInUser}, (err, courses)=> {
-                // //         const courseId = courses[courses.length - 1]._id;
-                // //         Resources.create( {resourceName: resourcesName, file: result.secure_url, courseId}, (err, response)=>{
-                // //             if (err) {
-                // //                 console.log(err);
-                // //                 res.json({status: false, message: "Error occurred while adding resources. Please try again", errorOccurred: true})
-                        
-                // //             }else {
-                // //                 console.log('Success');
-                // //                 res.json({status: true, message: "Successful"})
-                // //             }
-                // //             })
-                // //         })
-                // // }
-                // ).catch(err=> {
-                //     console.log(err);
-                //     res.json({status: false, message: "Error occurred while adding file. Please try again", errorOccurred: true});
-                // })
             }
             else {
                 console.log('Resource exists');
@@ -72,8 +49,19 @@ const stageTwoOfAddResources = async(req, res)=>{
             }
         }
     })
-
 }
-module.exports = { stageTwoOfAddResources}
+
+const getCourseResources = (req, res) => {
+    Resources.find({"courseId": req.body.id}, (err, result)=> {
+        if(err) {
+            console.log(err)
+            res.json({status: false, message: "An unexpected error occurred. Please try again"});
+        }else {
+            // console.log(result)
+            res.json({status: true, resources: result})
+        }
+    })
+}
+module.exports = { stageTwoOfAddResources, getCourseResources}
 
 

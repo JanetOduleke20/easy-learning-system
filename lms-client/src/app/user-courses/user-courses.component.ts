@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AddCourseService } from '../services/add-course.service';
+import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
+import { DialogBoxComponent } from '../dialog-box/dialog-box.component';
 
 @Component({
   selector: 'app-user-courses',
@@ -18,7 +20,8 @@ export class UserCoursesComponent implements OnInit {
   public display = "none";
 
   constructor(
-    private _addCourse: AddCourseService
+    private _addCourse: AddCourseService,
+    public dialog: MatDialog
   ) { }
   public obj = {}
   ngOnInit(): void {
@@ -39,13 +42,35 @@ export class UserCoursesComponent implements OnInit {
     })
   }
 
-
   openModal() {
     this.display = "block";
   }
   onCloseHandled() {
     this.display = "none";
   }
+  viewResourcesDialog(_id:any) {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = {option: 4, courseId: _id}
+    let dialogRef = this.dialog.open(DialogBoxComponent, dialogConfig);
+  }
 
-
+  openDetailsDialog(_id:any) {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = {option: 1, courseId: _id}
+    let dialogRef = this.dialog.open(DialogBoxComponent, dialogConfig);
+  }
+  openResourcesDialog(_id:any) {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = {option: 2, courseId: _id}
+    let dialogRef = this.dialog.open(DialogBoxComponent, dialogConfig);
+  }
+  openPriceDialog(_id:any) {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = {option: 3, courseId: _id}
+    let dialogRef = this.dialog.open(DialogBoxComponent, dialogConfig);
+  }
 }
+
+
+
+
