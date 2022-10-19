@@ -15,12 +15,13 @@ export class EnrollForACourseComponent implements OnInit {
   public messageStatus = false;
   public message = ''
 
-  public allCourses = []
+  public allCourses = [];
+  public resources = [];
+  public prices = []
 
   constructor(
     private _getCourses: GetCoursesService,
     private _cartService: CartService,
-
   ) { }
 
   ngOnInit(): void {
@@ -32,8 +33,9 @@ export class EnrollForACourseComponent implements OnInit {
         this.messageStatus = true;
         this.message = res.message;
       }else {
-        this.allCourses = res.allCourses;
-        // console.log(res)
+        this.allCourses = res.courses;
+        this.resources = res.resources;
+        this.prices = res.prices;
       }
     },
     err=>(console.log(err))
@@ -49,19 +51,13 @@ export class EnrollForACourseComponent implements OnInit {
         this.messageStatus = true;
         alert(res.message)
       }else {
-        // let snackBarRef = this._snackBar.open('Added to cart', 'Close');
-        console.log(res)
         this.allCourses = res.allCourses
+        // this._resourceService.getCourseResources()
       }
     },
     err=>(console.log(err))
     )
   }
-  // openSnackBar(message: string, action: string) {
-  //   this._snackBar.open(message, 'action');
-  //   this._snackBar.open('Message archived', 'Undo', {
-  //     duration: 3000
-  //   });
-  // }
+  
 
 }
